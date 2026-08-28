@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jmeter-load-test
+  namespace: jmeter
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      containers:
+      - name: jmeter
+        image: domuharahap/jmeter-tester:v2.0
+        imagePullPolicy: Always
+        env:
+        # Standard dynamic variables
+        - name: JVM_THREADS
+          value: "50"
+        - name: JVM_LOOPS
+          value: "-1"
+        - name: JVM_DURATION
+          value: "600"
+        # Target application domain (no protocol, no port)
+        - name: JVM_APP_URL
+          value: "dtpay.34.67.92.11.nip.io"
+        # Securely injected Dynatrace variables
+        - name: JVM_DT_URL
+          valueFrom:
+            secretKeyRef:
+              name: dynatrace-creds
+              key: DT_URL
+        - name: JVM_DT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: dynatrace-creds
+              key: DT_TOKEN
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      restartPolicy: Never
+  backoffLimit: 0
