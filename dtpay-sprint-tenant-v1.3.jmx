@@ -28,6 +28,8 @@
           </elementProp>
         </collectionProp>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group">
@@ -86,7 +88,7 @@ try {
 	    ]
 	]])
 
-    def url  = new URL(DT_URL + &quot;/api/v2/bizevents/ingest&quot;)
+    def url  = new URL(DT_URL + &quot;/platform/classic/environment-api/v2/bizevents/ingest&quot;)
     def conn = (HttpURLConnection) url.openConnection()
     conn.setRequestMethod(&quot;POST&quot;)
     conn.setDoOutput(true)
@@ -165,7 +167,7 @@ try {
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">X-JMeter-Test-Case</stringProp>
@@ -438,7 +440,7 @@ synchronized(lock) {
         </elementProp>
       </PostThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -601,7 +603,7 @@ try {
 
     log.info(&quot;Payload:\n&quot; + JsonOutput.prettyPrint(payload))
 
-    def url  = new URL(DT_URL + &quot;/api/v2/bizevents/ingest&quot;)
+    def url  = new URL(DT_URL + &quot;/platform/classic/environment-api/v2/bizevents/ingest&quot;)
     def conn = (HttpURLConnection) url.openConnection()
     conn.setRequestMethod(&quot;POST&quot;)
     conn.setDoOutput(true)
