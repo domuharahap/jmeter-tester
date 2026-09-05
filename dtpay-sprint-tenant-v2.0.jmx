@@ -95,7 +95,7 @@ try {
 	    ]
 	]])
 
-    def url  = new URL(DT_URL + &quot;/platform/classic/environment-api/v2/bizevents/ingest&quot;)
+    def url  = new URL(DT_URL + &quot;/api/v2/bizevents/ingest&quot;)
     def conn = (HttpURLConnection) url.openConnection()
     conn.setRequestMethod(&quot;POST&quot;)
     conn.setDoOutput(true)
@@ -616,7 +616,7 @@ try {
 
     log.info(&quot;=== Stats Ticker #${seqNum}: elapsed=${elapsedMs}ms cumTotal=${grandTotal} intTps=${grandIntTps}/s ===&quot;)
 
-    def url  = new URL(DT_URL + &quot;/platform/classic/environment-api/v2/bizevents/ingest&quot;)
+    def url  = new URL(DT_URL + &quot;/api/v2/bizevents/ingest&quot;)
     def conn = (HttpURLConnection) url.openConnection()
     conn.setRequestMethod(&quot;POST&quot;)
     conn.setDoOutput(true)
@@ -818,7 +818,7 @@ try {
 
     log.info(&quot;Payload:\n&quot; + JsonOutput.prettyPrint(payload))
 
-    def url  = new URL(DT_URL + &quot;/platform/classic/environment-api/v2/bizevents/ingest&quot;)
+    def url  = new URL(DT_URL + &quot;/api/v2/bizevents/ingest&quot;)
     def conn = (HttpURLConnection) url.openConnection()
     conn.setRequestMethod(&quot;POST&quot;)
     conn.setDoOutput(true)

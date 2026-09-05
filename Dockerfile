@@ -19,7 +19,7 @@ RUN wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_
 WORKDIR /jmeter
 
 # Copy the JMeter test script and entrypoint script
-COPY dtpay-sprint-tenant-v2.0.jmx /jmeter/dtpay-testing.jmx
+COPY dtpay-sprint-tenant-v1.3.jmx /jmeter/dtpay-testing.jmx
 COPY entrypoint.sh /jmeter/entrypoint.sh
 
 RUN chmod +x /jmeter/entrypoint.sh
